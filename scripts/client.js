@@ -2,7 +2,7 @@
 const $inputBox = $('#input-box');
 const $button = $('button');
 const $listContainer = $('#list-container');
-
+const testContainer = document.getElementById('list-container');
 
 const erase = function(str) {
   let div = document.createElement('div');
@@ -28,6 +28,9 @@ $('button').on('click', function() {
   $(this).parents('.row').find('#input-box').val('');
 })
 
-$inputBox.on('click', () => {
-  console.log('clicked input box')
-})
+$listContainer.on('click', function(event) {
+  if (event.target.nodeName === "LI") {
+    $(event.target).toggleClass('checked');
+  }
+  console.log('checked off task');
+});
