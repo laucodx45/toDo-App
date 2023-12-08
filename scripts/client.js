@@ -2,7 +2,6 @@
 const $inputBox = $('#input-box');
 const $button = $('button');
 const $listContainer = $('#list-container');
-const testContainer = document.getElementById('list-container');
 
 const erase = function(str) {
   let div = document.createElement('div');
@@ -19,10 +18,13 @@ const addTask = () => {
     return;
   }
 
-  $($listContainer).append(`<li>${erase(inputText)}</li>`);
+  $($listContainer).append(`<div class="task-row">
+  <li>${erase(inputText)} </li>
+  <i id="cross" class="fa-regular fa-circle-xmark"></i>
+</div>`);
 };
 
-$('button').on('click', function() {
+$button.on('click', function() {
   addTask();
   // clears the input box after button event
   $(this).parents('.row').find('#input-box').val('');
@@ -31,6 +33,9 @@ $('button').on('click', function() {
 $listContainer.on('click', function(event) {
   if (event.target.nodeName === "LI") {
     $(event.target).toggleClass('checked');
+    return;
   }
-  console.log('checked off task');
+  if (event.target.nodeName === "I") {
+    $(event.target).parents('.task-row').remove();
+  }
 });
