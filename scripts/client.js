@@ -3,6 +3,13 @@ const $inputBox = $('#input-box');
 const $button = $('button');
 const $listContainer = $('#list-container');
 
+
+const erase = function(str) {
+  let div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const addTask = () => {
   const inputText = $inputBox.val();
   
@@ -12,7 +19,7 @@ const addTask = () => {
     return;
   }
 
-  $($listContainer).append(`<li>${inputText}</li>`);
+  $($listContainer).append(`<li>${erase(inputText)}</li>`);
 };
 
 $('button').on('click', function() {
