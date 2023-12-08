@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dhurjati', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 170, 255);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 540px;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.container #dog-pic {
+  height: 80px;
+  width: auto;
+}
+
+.container .title {
+  margin-top: 7px;
+  padding-right: 19px;
+  font-weight: 600;
+  font-size: 50px;
+}
+
+.container .row {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  background-color: #edeef0;
+  border-radius: 30px;
+  padding-left: 20px;
+  font-size: 21px;
+}
+
+.container input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 10px;
+  font-size: 21px;
+  width: 17em;
+}
+.container .row button {
+  background-color: darkgreen;
+  color: #edeef0;
+  border-radius: 40px;
+  width: 99px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#list-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+  font-size: 21px;
+  position: relative;
+}
+
+ul li {
+  padding: 7px;
+  cursor: pointer;
+}
+
+ul li::before {
+  content: '';
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  border-style: solid;
+  left: 8px;
+}
