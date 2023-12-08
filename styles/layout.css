@@ -59,6 +59,7 @@ header {
   font-size: 21px;
   width: 17em;
 }
+
 .container .row button {
   background-color: darkgreen;
   color: #edeef0;
@@ -98,4 +99,17 @@ ul li.checked {
 
 ul li.checked::before {
   background-color: green;
+}
+
+.task-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#cross {
+  cursor: pointer;
+  color: black;
+  font-size: 18px;
+  padding: 7px;
 }
