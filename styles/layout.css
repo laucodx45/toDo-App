@@ -90,3 +90,11 @@ ul li::before {
   border-style: solid;
   left: 8px;
 }
+
+ul li.checked {
+  text-decoration-line: line-through;
+}
+
+ul li.checked::before {
+  background-color: green;
+}
