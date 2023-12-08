@@ -73,6 +73,7 @@ header {
   flex-direction: column;
   padding: 20px 50px;
   font-size: 21px;
+  font-family: 'Afacad', sans-serif;
   position: relative;
 }
 
