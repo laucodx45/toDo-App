@@ -17,7 +17,8 @@ const addTask = () => {
 
 $('button').on('click', function() {
   addTask();
-
+  // clears the input box after button event
+  $(this).parents('.row').find('#input-box').val('');
 })
 
 $inputBox.on('click', () => {
