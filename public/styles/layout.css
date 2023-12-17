@@ -125,3 +125,12 @@ ul li.checked::before {
   font-size: 18px;
   padding: 7px;
 }
+
+@media only screen and (max-width: 420px) {
+  .container .title {
+    font-size: 45px;
+  }
+  .container input {
+    width: 13em;
+  }
+}
