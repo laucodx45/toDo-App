@@ -41,6 +41,18 @@ header {
   font-size: 50px;
 }
 
+.container .error-message {
+  display: flex;
+  justify-content: center;
+  color: red;
+  margin-bottom: 20px;
+}
+
+.container .error-message p {
+  margin: 0 10px 0 10px;
+  font-size: 22px;
+}
+
 .container .row {
   display: flex;
   justify-content: center;

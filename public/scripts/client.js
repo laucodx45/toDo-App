@@ -2,7 +2,9 @@
 const $inputBox = $('#input-box');
 const $button = $('button');
 const $listContainer = $('#list-container');
+const $errorMessage = $('.error-message');
 
+$errorMessage.hide();
 
 const saveData = () => {
   localStorage.content = $listContainer.html();
@@ -25,10 +27,10 @@ const addTask = () => {
   
   if (inputText.length === 0) {
     // eventuall change it to a better pop up message
-    alert('You must type something in Dawg!');
+    $errorMessage.show(200);
     return;
   }
-
+  $errorMessage.hide()
   $($listContainer).append(`<div class="task-row">
   <li>${erase(inputText)} </li>
   <i id="cross" class="fa-regular fa-circle-xmark"></i>
@@ -45,12 +47,12 @@ $button.on('click', function() {
 $listContainer.on('click', function(event) {
   if (event.target.nodeName === "LI") {
     $(event.target).toggleClass('checked');
-    // saveData();
+    saveData();
     return;
   }
   if (event.target.nodeName === "I") {
     $(event.target).parents('.task-row').remove();
-    // saveData();
+    saveData();
   }
 });
 
