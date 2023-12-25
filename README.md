@@ -23,5 +23,5 @@
 1. Fork this repo
 2. Git clone the forked repo into your local device
 3. Install all dependencies using ```npm install```
-4. Start the server in terminal using ```npm run start```
+4. Start the server in terminal using ```npm start```
 5. Open you browser and go to `http://localhost:8080` to use the ToDo List App
