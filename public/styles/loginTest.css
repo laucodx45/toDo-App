@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dhurjati', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: rgb(0, 170, 255);
+  margin: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aliceblue;
+  margin: 100px auto 20px auto;
+  padding: 40px 100px 40px 100px;
+  border-radius: 10px;
+  max-width: 540px;
+} 
+
+main .loginHeader {
+  font-weight: 600;
+  font-size: 50px;
+}
+
+main label {
+  font-size: 21px;
+}
+
+main form {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+main .submit-btn {
+  background-color: darkgreen;
+  color: #edeef0;
+  border-radius: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+main form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 10px 0;
+}
+
+img {
+  width: 400px;
+  height: auto;
+  margin: 0 auto;
+  padding-top: 0;
+  padding-bottom: 20px;
+}

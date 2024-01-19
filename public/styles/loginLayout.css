@@ -1,0 +1,49 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Dhurjati', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 170, 255);
+}
+
+.loginBox {
+  max-width: 540px;
+  margin: 100px auto 20px;
+  padding: 40px 30px 70px;
+  background-color: aliceblue;
+  border-radius: 10px;
+}
+
+.loginHeader {
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+  margin: 5% 0 5% 0;
+}
+
+
+.usernameBox {
+  display: flex;
+  margin: 5% 0 5% 0;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+  padding-top: 23px;
+}
+
+.submit-btn {
+  background-color: darkgreen;
+  color: #edeef0;
+  padding: 1% 10% 1%;
+  border-radius: 10%;
+  cursor: pointer;
+}

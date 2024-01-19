@@ -43,7 +43,7 @@ header {
 
 .container .error-message {
   display: flex;
-  justify-content: center;
+  justify-content: center; 
   color: red;
   margin-bottom: 20px;
 }
