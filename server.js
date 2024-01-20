@@ -3,40 +3,57 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
-const saltRounds = process.env.SALTROUNDS;
 const database = require('./db/database');
 require('dotenv').config();
+const cookieSession = require('cookie-session');
+
+const saltRounds = process.env.SALTROUNDS;
 
 ///////////////////////////////////////////
 // middleware/////////////////////////////
+app.use(cookieSession({
+  name: 'session',
+  keys: [process.env.KEY1, process.env.KEY2],
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded ({ extended: false }));
 
-// app.get('/', (req, res) => {
-//   // once user logged in, we want to establish a cookie
-//   // if no cookie then we have to redirect user to /login
-// });
 const PATH = path.resolve(__dirname, './public/login.html');
 app.get('/login', (req, res) => {
   res.sendFile(PATH);
+});
+
+app.get('/', (req, res) => {
+  const currentUser = req.session.userId;
+  if (!currentUser) {
+    res.redirect('/login');
+  }
 });
 
 app.post('/login', (req, res) => {
   const inputUsername = req.body.username;
   const inputPassword = req.body.password;
   database
-    .getUsername(inputUsername).then((obj) => {
-      if (obj.username === inputUsername) {
-        bcrypt.compare(inputPassword, obj.password, function(err, result) {
+    .getUsername(inputUsername).then((user) => {
+      if (!user) {
+        res.json({message: "sorry, we cannot find this user in our database"});
+        return;
+      }
+
+      if (user.username === inputUsername) {
+        bcrypt.compare(inputPassword, user.password, function(err, result) {
           if (result) {
-            // res.send('user is in our database!');
+            req.session.userId = user.id;
             res.redirect('/');
+          } else {
+            res.json({message: "wrong password"});
           }
         });
       }
     });
-  // a function imported, to look up username and the hashed password from database
   
 });
 
