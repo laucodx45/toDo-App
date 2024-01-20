@@ -15,23 +15,22 @@
   <title>To Do List App Login</title>
 </head>
 <body>
-  <div class='loginBox'>
+  <main>
     <p class="loginHeader">Login</p>
     <form action="/login" method="post">
-      <!-- Input for the username -->
-      <label for="username">Username</label>
-      <div class="usernameBox">
+      <div class="form-group">
+        <label for="username">Username</label>
         <input type="text" id="username" name="username" required>
       </div>
-      <label for="password">Password</label>
-      <div class="passwordBox">
-        <input type="text" id="password" name="password" required>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
       </div>
-      <!-- Submit button -->
-      <div class="btn-box">
+      <div class="form-group">
         <button class="submit-btn" type="submit">Login</button>
-      </div>  
+      </div>
     </form>
-  </div>
+  </main>
+  <img src="./images/dog2.png" alt="dog2">
 </body>
 </html>

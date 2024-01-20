@@ -3,10 +3,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const saltRounds = process.env.SALTROUNDS;
 const database = require('./db/database');
-// test username = cody
-// test pw = password
+require('dotenv').config();
 
 ///////////////////////////////////////////
 // middleware/////////////////////////////
@@ -36,7 +35,7 @@ app.post('/login', (req, res) => {
           }
         });
       }
-  })
+    });
   // a function imported, to look up username and the hashed password from database
   
 });
