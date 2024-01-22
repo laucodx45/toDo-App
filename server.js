@@ -46,7 +46,6 @@ app.post('/login', (req, res) => {
       if (user.username === inputUsername) {
         if (bcrypt.compare(inputPassword, user.password)) {
           req.session.userId = user.id;
-          console.log(req.session.userId);
           res.redirect('/');
         } else {
           res.json({message: "wrong password"});
