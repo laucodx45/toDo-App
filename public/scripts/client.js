@@ -3,9 +3,9 @@ const $inputBox = $('#input-box');
 const $button = $('button');
 const $listContainer = $('#list-container');
 const $errorMessage = $('.error-message');
+const $main = $('main');
 
-$errorMessage.hide();
-
+////////////functions
 const saveData = () => {
   localStorage.content = $listContainer.html();
 };
@@ -38,6 +38,30 @@ const addTask = () => {
   saveData();
 };
 
+const checkAuthentication = () => {
+  return new Promise((resolve, reject) => {
+    $.get("/main-content", function(data, status) {
+      if (status === 200) {
+        resolve(data);
+      } else {
+        $main.append(data);
+      }
+    });
+  })
+
+};
+
+// ////////////////functions
+
+checkAuthentication()
+  .then((data) => {
+    $main.html(data);
+    $errorMessage.hide();
+  });
+
+// once it's resolve
+$errorMessage.hide();
+
 $button.on('click', function() {
   addTask();
   // clears the input box after button event
@@ -57,3 +81,26 @@ $listContainer.on('click', function(event) {
 });
 
 showTask();
+
+
+// $errorMessage.hide();
+
+// $button.on('click', function() {
+//   addTask();
+//   // clears the input box after button event
+//   $(this).parents('.row').find('#input-box').val('');
+// });
+
+// $listContainer.on('click', function(event) {
+//   if (event.target.nodeName === "LI") {
+//     $(event.target).toggleClass('checked');
+//     saveData();
+//     return;
+//   }
+//   if (event.target.nodeName === "I") {
+//     $(event.target).parents('.task-row').remove();
+//     saveData();
+//   }
+// });
+
+// showTask();

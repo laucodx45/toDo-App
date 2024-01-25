@@ -21,15 +21,54 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded ({ extended: false }));
 
-const PATH = path.resolve(__dirname, './public/login.html');
-app.get('/login', (req, res) => {
-  res.sendFile(PATH);
-});
-
-app.get('/', (req, res) => {
+app.get('/main-content', (req, res) => {
   const currentUser = req.session.userId;
-  if (!currentUser) {
-    res.redirect('/login');
+  const mainContent = `
+  <div class="container">
+    <header>
+      <p class="title">To Do List</p>
+      <img id="dog-pic" src="https://images.vexels.com/media/users/3/213173/isolated/preview/c6137c02cac6b596b3cc3969719a040e-colored-cute-dachshund.png" alt="dog">
+    </header>
+    <div class="error-message">
+      <i class="fa-solid fa-circle-exclamation"></i>
+        <p>You must type something in Dawg!</p>
+      <i class="fa-solid fa-circle-exclamation"></i>
+    </div>
+    <div class="row">
+      <input type="text" id="input-box" placeholder="Watcha gotta do?">
+      <button>YEAH DAWG</button>
+    </div>
+    <ul id="list-container">
+      <!-- <div class="task-row">
+        <li>dummy for format</li>
+        <i id="cross" class="fa-regular fa-circle-xmark"></i>
+      </div> -->
+    </ul>
+  </div>
+  `;
+  const loginHTML = `
+  <div id="login-container">
+    <p class="loginHeader">Login</p>
+    <form action="/login" method="post">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <button class="submit-btn" type="submit">Login</button>
+      </div>
+    </form>
+  </div>
+  `;
+
+  if (currentUser) {
+    res.status(200).send(mainContent);
+  } else {
+    res.send(loginHTML);
   }
 });
 
