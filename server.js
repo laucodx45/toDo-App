@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const database = require('./db/database');
 require('dotenv').config();
 const cookieSession = require('cookie-session');
-
 const saltRounds = process.env.SALTROUNDS;
 
 ///////////////////////////////////////////
@@ -66,9 +65,9 @@ app.get('/main-content', (req, res) => {
   `;
 
   if (currentUser) {
-    res.status(200).send(mainContent);
+    res.status(200).send(true);
   } else {
-    res.send(loginHTML);
+    res.send(false);
   }
 });
 
@@ -86,6 +85,8 @@ app.post('/login', (req, res) => {
         if (bcrypt.compare(inputPassword, user.password)) {
           req.session.userId = user.id;
           res.redirect('/');
+          // change to res.json? authenticated
+          // res.json({message: 'logged in'})
         } else {
           res.json({message: "wrong password"});
         }

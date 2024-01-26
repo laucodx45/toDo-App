@@ -23,7 +23,23 @@
 </head>
 <body>
   <main>
-    <!-- <div class="container">
+    <div id="login-container">
+      <p class="loginHeader">Login</p>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+          <button class="submit-btn" type="submit">Login</button>
+        </div>
+      </form>
+    </div>
+    <div class="container">
       <header>
         <p class="title">To Do List</p>
         <img id="dog-pic" src="https://images.vexels.com/media/users/3/213173/isolated/preview/c6137c02cac6b596b3cc3969719a040e-colored-cute-dachshund.png" alt="dog">
@@ -43,7 +59,7 @@
           <i id="cross" class="fa-regular fa-circle-xmark"></i>
         </div> -->
       <!-- </ul>
-    </div> -->
+    </div>
   </main>
 </body>
 </html>

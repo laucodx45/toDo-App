@@ -30,34 +30,32 @@ const addTask = () => {
     $errorMessage.show(200);
     return;
   }
-  $errorMessage.hide()
+  $errorMessage.hide();
   $($listContainer).append(`<div class="task-row">
   <li>${erase(inputText)} </li>
   <i id="cross" class="fa-regular fa-circle-xmark"></i>
   </div>`);
   saveData();
 };
-
+// what if we post both login and main and hide it, untill .get receive a true for authentication
+// truthy then login.hide main.show()
+// falsy then do nothing, or show an error message in login page saying login in failed try different password
 const checkAuthentication = () => {
-  return new Promise((resolve, reject) => {
-    $.get("/main-content", function(data, status) {
-      if (status === 200) {
-        resolve(data);
-      } else {
-        $main.append(data);
-      }
-    });
-  })
+  
+  $.get("/main-content", (data) => {
+    if (data) {
+      $('#login-container').hide();
+      $('.container').show();
+    }
+  });
 
 };
 
 // ////////////////functions
+$('.container').hide();
+$errorMessage.hide();
 
-checkAuthentication()
-  .then((data) => {
-    $main.html(data);
-    $errorMessage.hide();
-  });
+checkAuthentication();
 
 // once it's resolve
 $errorMessage.hide();
